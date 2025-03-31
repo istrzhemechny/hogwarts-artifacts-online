@@ -16,11 +16,11 @@ public class WizardService {
 
     private final ArtifactRepository artifactRepository;
 
+
     public WizardService(WizardRepository wizardRepository, ArtifactRepository artifactRepository) {
         this.wizardRepository = wizardRepository;
         this.artifactRepository = artifactRepository;
     }
-
 
     public List<Wizard> findAll() {
         return this.wizardRepository.findAll();
@@ -59,7 +59,7 @@ public class WizardService {
         Artifact artifactToBeAssigned = this.artifactRepository.findById(artifactId)
                 .orElseThrow(() -> new ObjectNotFoundException("artifact", artifactId));
 
-        // Find this wizard by Id fromm DB.
+        // Find this wizard by Id from DB.
         Wizard wizard = this.wizardRepository.findById(wizardId)
                 .orElseThrow(() -> new ObjectNotFoundException("wizard", wizardId));
 
@@ -70,6 +70,5 @@ public class WizardService {
         }
         wizard.addArtifact(artifactToBeAssigned);
     }
-
 
 }
